@@ -1,11 +1,11 @@
-# This can take a lot of time. Generate only needed!
+# This can take a lot of time. Generate only (when) needed!
 
 # trivial
 python scripts/ruleset_generator.py \
   --chain_depth=0 \
   --num_distractor_objects=3 \
-  --total_rulesets=1_000_000 \
-  --save_path="trivial_1m"
+  --total_rulesets=21_000 \
+  --save_path="trivial_21k"
 
 # small
 python scripts/ruleset_generator.py \

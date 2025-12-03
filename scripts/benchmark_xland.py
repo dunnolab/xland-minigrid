@@ -15,7 +15,7 @@ jax.config.update("jax_threefry_partitionable", True)
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--env-id", type=str, default="MiniGrid-Empty-16x16")
-parser.add_argument("--benchmark-id", type=str, default="Trivial")
+parser.add_argument("--benchmark-id", type=str, default="trivial-21k")
 parser.add_argument("--img-obs", action="store_true")
 parser.add_argument("--timesteps", type=int, default=1000)
 parser.add_argument("--num-envs", type=int, default=8192)
