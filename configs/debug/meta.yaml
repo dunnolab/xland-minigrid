@@ -1,6 +1,6 @@
 # params for quick debug on the CPU, should be 0.8+ score
 env_id: "XLand-MiniGrid-R1-9x9"
-benchmark_id: "trivial-1m"
+benchmark_id: "trivial-21k"
 rnn_hidden_dim: 32
 head_hidden_dim: 16
 num_envs: 256

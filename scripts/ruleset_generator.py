@@ -261,8 +261,8 @@ if __name__ == "__main__":
         )
         # sample only unique rulesets (rejection sampling)
         if encode(ruleset) in unique_rulesets_encodings:
-            tqdm.write("Collision, resampling!")
-            while encode(ruleset) not in unique_rulesets_encodings:
+            tqdm.write("Collision, resampling...!")
+            while encode(ruleset) in unique_rulesets_encodings:
                 ruleset = sample_ruleset(
                     args.chain_depth,
                     args.num_distractor_rules,

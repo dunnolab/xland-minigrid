@@ -36,7 +36,7 @@ class TrainConfig:
     group: str = "default"
     name: str = "meta-task-ppo"
     env_id: str = "XLand-MiniGrid-R1-9x9"
-    benchmark_id: str = "trivial-1m"
+    benchmark_id: str = "trivial-21k"
     img_obs: bool = False
     # agent
     obs_emb_dim: int = 16

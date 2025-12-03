@@ -170,7 +170,7 @@ scripts/*.pdf
 scripts/*.jpg
 scripts/*.png
 src/xminigrid/envs/xland_tmp.py
-g
+
 # will remove later
 scripts/*testing*
 configs/wip

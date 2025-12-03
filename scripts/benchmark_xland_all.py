@@ -18,7 +18,7 @@ jax.config.update("jax_threefry_partitionable", True)
 NUM_ENVS = (128, 256, 512, 1024, 2048, 4096, 8192, 16384)
 
 parser = argparse.ArgumentParser()
-parser.add_argument("--benchmark-id", type=str, default="trivial-1m")
+parser.add_argument("--benchmark-id", type=str, default="trivial-21k")
 parser.add_argument("--img-obs", action="store_true")
 parser.add_argument("--timesteps", type=int, default=1000)
 parser.add_argument("--num-repeat", type=int, default=10, help="Number of timing repeats")

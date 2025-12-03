@@ -37,10 +37,8 @@
 
 # Meta-Reinforcement Learning in JAX
 
-[//]: # (> 🥳 **XLand-MiniGrid was [accepted]&#40;https://openreview.net/forum?id=xALDC4aHGz&#41; to [Intrinsically Motivated Open-ended Learning]&#40;https://imol-workshop.github.io&#41; workshop at NeurIPS 2023.** We look forward to seeing everyone at the poster session! )
-
-> 🥳 We recently released [**XLand-100B**](https://github.com/dunno-lab/xland-minigrid-datasets), a large multi-task dataset for offline meta and in-context RL research, based on XLand-MiniGrid. 
-It is currently the largest dataset for in-context RL, containing full learning histories for **30k unique tasks, 100B transitions, and 2.5B episodes**. Check it out!
+<!-- > 🥳 We recently released [**XLand-100B**](https://github.com/dunno-lab/xland-minigrid-datasets), a large multi-task dataset for offline meta and in-context RL research, based on XLand-MiniGrid. 
+It is currently the largest dataset for in-context RL, containing full learning histories for **30k unique tasks, 100B transitions, and 2.5B episodes**. Check it out! -->
 
 **XLand-MiniGrid** is a suite of tools, grid-world environments and benchmarks for meta-reinforcement learning research inspired by 
 the diversity and depth of [XLand](https://deepmind.google/discover/blog/generally-capable-agents-emerge-from-open-ended-play/) 
@@ -103,7 +101,7 @@ key = jax.random.key(0)
 reset_key, ruleset_key = jax.random.split(key)
 
 # to list available benchmarks: xminigrid.registered_benchmarks()
-benchmark = xminigrid.load_benchmark(name="trivial-1m")
+benchmark = xminigrid.load_benchmark(name="trivial-21k")
 # choosing ruleset, see section on rules and goals
 ruleset = benchmark.sample_ruleset(ruleset_key)
 
@@ -180,7 +178,7 @@ AdA agent from the original XLand. Each task is represented with a tree, where r
 
 These benchmarks differ in the generation configs, producing distributions with
 varying levels of diversity and average difficulty of the tasks. They can be used for different purposes, for example
-the `trivial-1m` benchmark can be used to debug your agents, allowing very quick iterations. However, we would caution 
+the `trivial-21k` benchmark can be used to debug your agents, allowing very quick iterations. However, we would caution 
 against treating benchmarks as a progression from simple to complex. They are just different 🤷.
 
 Pre-sampled benchmarks are hosted on [HuggingFace](https://huggingface.co/datasets/Howuhh/xland_minigrid/tree/main) and will be downloaded and cached on the first use:
@@ -192,9 +190,9 @@ from xminigrid.benchmarks import Benchmark
 
 # downloading to path specified by XLAND_MINIGRID_DATA,
 # ~/.xland_minigrid by default
-benchmark: Benchmark = xminigrid.load_benchmark(name="trivial-1m")
+benchmark: Benchmark = xminigrid.load_benchmark(name="trivial-21k")
 # reusing cached on the second use
-benchmark: Benchmark = xminigrid.load_benchmark(name="trivial-1m")
+benchmark: Benchmark = xminigrid.load_benchmark(name="trivial-21k")
 
 # users can sample or get specific rulesets
 benchmark.sample_ruleset(jax.random.key(0))
