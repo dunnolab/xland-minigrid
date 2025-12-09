@@ -37,6 +37,7 @@ dependencies = [
     "jaxlib>=0.4.27",
     "flax>=0.8.0",
     "rich>=13.4.2",
+    "tqdm>=4.67.1",
     "chex>=0.1.85",
     "imageio>=2.31.2",
     "imageio-ffmpeg>=0.4.9",
