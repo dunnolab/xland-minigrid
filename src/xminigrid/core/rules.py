@@ -26,20 +26,24 @@ def check_rule(
             encoding[0],
             (
                 # empty rule first, we use them as paddings during benchmark generation
-                lambda: EmptyRule.decode(encoding)(grid, agent, action, position),
-                lambda: AgentHoldRule.decode(encoding)(grid, agent, action, position),
-                lambda: AgentNearRule.decode(encoding)(grid, agent, action, position),
-                lambda: TileNearRule.decode(encoding)(grid, agent, action, position),
+                EmptyRule.decode(encoding),
+                AgentHoldRule.decode(encoding),
+                AgentNearRule.decode(encoding),
+                TileNearRule.decode(encoding),
                 # rules for the extended benchmarks
-                lambda: TileNearUpRule.decode(encoding)(grid, agent, action, position),
-                lambda: TileNearRightRule.decode(encoding)(grid, agent, action, position),
-                lambda: TileNearDownRule.decode(encoding)(grid, agent, action, position),
-                lambda: TileNearLeftRule.decode(encoding)(grid, agent, action, position),
-                lambda: AgentNearUpRule.decode(encoding)(grid, agent, action, position),
-                lambda: AgentNearRightRule.decode(encoding)(grid, agent, action, position),
-                lambda: AgentNearDownRule.decode(encoding)(grid, agent, action, position),
-                lambda: AgentNearLeftRule.decode(encoding)(grid, agent, action, position),
+                TileNearUpRule.decode(encoding),
+                TileNearRightRule.decode(encoding),
+                TileNearDownRule.decode(encoding),
+                TileNearLeftRule.decode(encoding),
+                AgentNearUpRule.decode(encoding),
+                AgentNearRightRule.decode(encoding),
+                AgentNearDownRule.decode(encoding),
+                AgentNearLeftRule.decode(encoding),
             ),
+            grid,
+            agent,
+            action,
+            position,
         )
         return (grid, agent), None
 
