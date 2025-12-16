@@ -44,17 +44,16 @@ def check_goal(
 # should I inherit from abc.ABC?
 class BaseGoal(struct.PyTreeNode):
     @abc.abstractmethod
-    def __call__(self, grid: GridState, agent: AgentState, action: int | jax.Array, position: jax.Array) -> jax.Array:
-        ...
+    def __call__(
+        self, grid: GridState, agent: AgentState, action: int | jax.Array, position: jax.Array
+    ) -> jax.Array: ...
 
     @classmethod
     @abc.abstractmethod
-    def decode(cls, encoding: jax.Array) -> BaseGoal:
-        ...
+    def decode(cls, encoding: jax.Array) -> BaseGoal: ...
 
     @abc.abstractmethod
-    def encode(self) -> jax.Array:
-        ...
+    def encode(self) -> jax.Array: ...
 
 
 class EmptyGoal(BaseGoal):

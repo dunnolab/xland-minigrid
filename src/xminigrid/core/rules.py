@@ -52,17 +52,14 @@ class BaseRule(struct.PyTreeNode):
     @abc.abstractmethod
     def __call__(
         self, grid: GridState, agent: AgentState, action: int | jax.Array, position: jax.Array
-    ) -> tuple[GridState, AgentState]:
-        ...
+    ) -> tuple[GridState, AgentState]: ...
 
     @classmethod
     @abc.abstractmethod
-    def decode(cls, encoding: jax.Array) -> BaseRule:
-        ...
+    def decode(cls, encoding: jax.Array) -> BaseRule: ...
 
     @abc.abstractmethod
-    def encode(self) -> jax.Array:
-        ...
+    def encode(self) -> jax.Array: ...
 
 
 # TODO: checks on only some actions can produce bugs, but it is faster. If it's going to cause trouble, reconsider.

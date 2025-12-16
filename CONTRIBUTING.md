@@ -13,7 +13,7 @@ Do not be afraid to ask questions and share new ideas about possible directions 
 
 ## Contributing to the codebase
 
-Contributing code is done through standard github methods:
+We use uv for dependency management and virtual environments. Contributing code is done through standard github methods:
 
 1. Fork this repo
 2. Make a change and commit your code
@@ -22,7 +22,10 @@ Contributing code is done through standard github methods:
 ```commandline
 git clone git@github.com:corl-team/xland-minigrid.git
 cd xland-minigrid
-pip install -e ".[dev]"
+
+# Create and sync the development environment
+uv venv
+uv sync --extra dev --extra baselines
 ```
 
 ## Code style
@@ -32,17 +35,17 @@ The CI will run several checks on the new code pushed to the repository.
 These checks can also be run locally without waiting for the CI by following the steps below: 
 
 1. install [pre-commit](https://pre-commit.com/#install)
-2. install the Git hooks by running `pre-commit install`
+2. install the Git hooks by running `uv run pre-commit install`
 
 Once those two steps are done, the Git hooks will be run automatically at
 every new commit. The Git hooks can also be run manually with 
-`pre-commit run --all-files`, and if needed they can be 
+`uv run pre-commit run`, and if needed they can be 
 skipped (not recommended) with `git commit --no-verify`.
 
-Be sure to run and fix all issues from the `pre-commit run --all-files` before the push!
-If you want to see possible problems before pre-commit, you can run `ruff check --diff .` 
-and `ruff format --check` to see exact linter and formatter suggestions and possible fixes. 
-Similarly, run `pyright src/xminigrid` to see possible problems with type hints.
+Be sure to run and fix all issues from the `uv run pre-commit run --all-files` before the push!
+If you want to see possible problems before pre-commit, you can run `uv run ruff check --diff .` 
+and `uv run ruff format --check` to see exact linter and formatter suggestions and possible fixes. 
+Similarly, run `uv run pyright src/xminigrid` to see possible problems with type hints.
 
 # License
 
