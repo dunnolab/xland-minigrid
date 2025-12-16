@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import abc
-from typing import Any, Generic, Optional, TypeVar
+from typing import Any, Generic, Optional, TypeVar, Union
 
 import jax
 import jax.numpy as jnp
@@ -40,7 +40,7 @@ class Environment(abc.ABC, Generic[EnvParamsT, EnvCarryT]):
     def num_actions(self, params: EnvParamsT) -> int:
         return int(NUM_ACTIONS)
 
-    def observation_shape(self, params: EnvParamsT) -> tuple[int, int, int] | dict[str, Any]:
+    def observation_shape(self, params: EnvParamsT) -> Union[tuple[int, int, int], dict[str, Any]]:
         return params.view_size, params.view_size, NUM_LAYERS
 
     @abc.abstractmethod
@@ -89,7 +89,7 @@ class Environment(abc.ABC, Generic[EnvParamsT, EnvCarryT]):
         )
         return timestep
 
-    def render(self, params: EnvParamsT, timestep: TimeStep[EnvCarryT]) -> np.ndarray | str:
+    def render(self, params: EnvParamsT, timestep: TimeStep[EnvCarryT]) -> Union[np.ndarray, str]:
         if params.render_mode == "rgb_array":
             return rgb_render(np.asarray(timestep.state.grid), timestep.state.agent, params.view_size)
         elif params.render_mode == "rich_text":

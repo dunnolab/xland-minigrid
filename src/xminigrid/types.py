@@ -55,7 +55,7 @@ class TimeStep(struct.PyTreeNode, Generic[EnvCarryT]):
     step_type: StepType
     reward: jax.Array
     discount: jax.Array
-    observation: jax.Array | dict[str, jax.Array]
+    observation: Union[jax.Array, dict[str, jax.Array]]
 
     def first(self):
         return self.step_type == StepType.FIRST

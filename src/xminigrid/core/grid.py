@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Callable
+from typing import Callable, Optional, Union
 
 import jax
 import jax.numpy as jnp
@@ -158,7 +158,7 @@ def coordinates_mask(grid: GridState, address: tuple[IntOrArray, IntOrArray], co
     return mask
 
 
-def sample_coordinates(key: jax.Array, grid: GridState, num: int, mask: jax.Array | None = None) -> jax.Array:
+def sample_coordinates(key: jax.Array, grid: GridState, num: int, mask: Optional[jax.Array] = None) -> jax.Array:
     if mask is None:
         mask = jnp.ones((grid.shape[0], grid.shape[1]), dtype=jnp.bool_)
 

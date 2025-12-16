@@ -2,12 +2,12 @@
 from __future__ import annotations
 
 import math
-from typing import Callable
+from typing import Callable, Union
 
 import numpy as np
 from typing_extensions import TypeAlias
 
-Color: TypeAlias = tuple[int, int, int] | int | np.ndarray
+Color: TypeAlias = Union[tuple[int, int, int], int, np.ndarray]
 Point: TypeAlias = tuple[float, float]  # | np.ndarray
 
 

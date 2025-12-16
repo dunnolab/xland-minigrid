@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import abc
+from typing import Union
 
 import jax
 import jax.numpy as jnp
@@ -14,7 +15,7 @@ NUM_GOALS = 15
 
 
 def check_goal(
-    encoding: jax.Array, grid: GridState, agent: AgentState, action: int | jax.Array, position: jax.Array
+    encoding: jax.Array, grid: GridState, agent: AgentState, action: Union[int, jax.Array], position: jax.Array
 ) -> jax.Array:
     check = jax.lax.switch(
         encoding[0],
@@ -45,7 +46,7 @@ def check_goal(
 class BaseGoal(struct.PyTreeNode):
     @abc.abstractmethod
     def __call__(
-        self, grid: GridState, agent: AgentState, action: int | jax.Array, position: jax.Array
+        self, grid: GridState, agent: AgentState, action: Union[int, jax.Array], position: jax.Array
     ) -> jax.Array: ...
 
     @classmethod

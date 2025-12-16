@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Any
+from typing import Any, Union
 
 import jax
 
@@ -21,7 +21,7 @@ class Wrapper(Environment[EnvParamsT, EnvCarryT]):
     def num_actions(self, params: EnvParamsT) -> int:
         return self._env.num_actions(params)
 
-    def observation_shape(self, params: EnvParamsT) -> tuple[int, int, int] | dict[str, Any]:
+    def observation_shape(self, params: EnvParamsT) -> Union[tuple[int, int, int], dict[str, Any]]:
         return self._env.observation_shape(params)
 
     def _generate_problem(self, params: EnvParamsT, key: jax.Array) -> State[EnvCarryT]:

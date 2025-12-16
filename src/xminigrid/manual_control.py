@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import argparse
 import os
+from typing import Optional
 
 import imageio.v3 as iio
 import jax
@@ -24,7 +25,7 @@ class ManualControl:
         env_params: EnvParamsT,
         agent_view: bool = False,
         save_video: bool = False,
-        video_path: str | None = None,
+        video_path: Optional[str] = None,
         video_format: str = ".mp4",
         video_fps: int = 8,
     ):
