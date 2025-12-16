@@ -67,9 +67,9 @@ How cool is that? For more details, take a look at the [technical paper](https:/
 The latest release of XLand-MiniGrid can be installed directly from PyPI:
 
 ```commandline
-pip install xminigrid
+uv add xminigrid (or pip install xminigrid)
 # or, from github directly
-pip install "xminigrid @ git+https://github.com/corl-team/xland-minigrid.git"
+uv pip install "xminigrid @ git+https://github.com/corl-team/xland-minigrid.git"
 ```
 
 Alternatively, if you want to install the latest development version from the GitHub and run provided algorithms or scripts,
@@ -78,8 +78,8 @@ install the source as follows:
 git clone git@github.com:corl-team/xland-minigrid.git
 cd xland-minigrid
 
-# additional dependencies for baselines
-pip install -e ".[dev,baselines]"
+# additional dependencies for dev and baselines
+uv sync --all-extras --dev
 ```
 Note that the installation of JAX may differ depending on your hardware accelerator! 
 We advise users to explicitly install the correct JAX version (see the [official installation guide](https://github.com/google/jax#installation)).

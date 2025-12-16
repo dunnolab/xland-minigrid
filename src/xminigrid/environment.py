@@ -35,8 +35,7 @@ EnvParamsT = TypeVar("EnvParamsT", bound="EnvParams")
 
 class Environment(abc.ABC, Generic[EnvParamsT, EnvCarryT]):
     @abc.abstractmethod
-    def default_params(self, **kwargs: Any) -> EnvParamsT:
-        ...
+    def default_params(self, **kwargs: Any) -> EnvParamsT: ...
 
     def num_actions(self, params: EnvParamsT) -> int:
         return int(NUM_ACTIONS)
@@ -45,8 +44,7 @@ class Environment(abc.ABC, Generic[EnvParamsT, EnvCarryT]):
         return params.view_size, params.view_size, NUM_LAYERS
 
     @abc.abstractmethod
-    def _generate_problem(self, params: EnvParamsT, key: jax.Array) -> State[EnvCarryT]:
-        ...
+    def _generate_problem(self, params: EnvParamsT, key: jax.Array) -> State[EnvCarryT]: ...
 
     def reset(self, params: EnvParamsT, key: jax.Array) -> TimeStep[EnvCarryT]:
         state = self._generate_problem(params, key)

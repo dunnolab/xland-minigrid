@@ -28,8 +28,7 @@ class AgentState(struct.PyTreeNode):
     pocket: jax.Array = struct.field(default_factory=lambda: TILES_REGISTRY[Tiles.EMPTY, Colors.EMPTY])
 
 
-class EnvCarry(struct.PyTreeNode):
-    ...
+class EnvCarry(struct.PyTreeNode): ...
 
 
 class State(struct.PyTreeNode, Generic[EnvCarryT]):

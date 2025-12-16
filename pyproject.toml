@@ -5,7 +5,7 @@ readme = "README.md"
 requires-python =">=3.9"
 license = {file = "LICENSE"}
 authors = [
-  {name = "Alexander Nikulin", email = "a.p.nikulin@tinkoff.ai"},
+  {name = "Alexander Nikulin", email = "hsehowuhh@gmail.com"},
 ]
 dynamic = ["version"]
 
@@ -62,8 +62,15 @@ baselines = [
 
 
 [build-system]
-requires = ["setuptools>=61.0"]
+requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
+
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
 
 [tool.setuptools.dynamic]
 version = {attr = "xminigrid.__version__"}
@@ -96,8 +103,12 @@ known-third-party = ["wandb"]
 include = ["src/xminigrid"]
 exclude = [
     'training',
+    'scripts',
     "**/node_modules",
     "**/__pycache__",
+]
+executionEnvironments = [
+  { root = "src" }
 ]
 reportMissingImports = "none"
 reportMissingTypeStubs = false

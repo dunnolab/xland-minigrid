@@ -126,6 +126,7 @@ class Memory(Environment[EnvParams, MemoryEnvCarry]):
             jnp.array_equal(new_agent.position, new_state.carry.success_pos),
             jnp.array_equal(new_agent.position, new_state.carry.failure_pos),
         )
+        assert params.max_steps is not None
         reward = jax.lax.select(
             jnp.array_equal(new_agent.position, new_state.carry.success_pos),
             1.0 - 0.9 * (new_state.step_num / params.max_steps),
