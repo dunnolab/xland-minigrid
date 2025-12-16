@@ -28,6 +28,17 @@ uv venv
 uv sync --extra dev --extra baselines
 ```
 
+Add new dependencies using:
+
+```
+uv add <package>
+
+# development-only dependencies
+uv add <package> --group dev
+```
+
+Do not use pip install for project dependencies, as it bypasses the lockfile and may cause inconsistent environments.
+
 ## Code style
 
 We use awesome [Ruff](https://docs.astral.sh/ruff/) linter and formatter and [Pyright](https://microsoft.github.io/pyright/#/) for type checking. 

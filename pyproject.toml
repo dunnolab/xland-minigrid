@@ -103,6 +103,7 @@ known-third-party = ["wandb"]
 include = ["src/xminigrid"]
 exclude = [
     'training',
+    'scripts',
     "**/node_modules",
     "**/__pycache__",
 ]
