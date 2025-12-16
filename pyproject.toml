@@ -65,6 +65,7 @@ baselines = [
 requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
+
 [tool.setuptools]
 package-dir = {"" = "src"}
 
@@ -104,6 +105,9 @@ exclude = [
     'training',
     "**/node_modules",
     "**/__pycache__",
+]
+executionEnvironments = [
+  { root = "src" }
 ]
 reportMissingImports = "none"
 reportMissingTypeStubs = false

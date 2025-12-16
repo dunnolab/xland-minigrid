@@ -38,4 +38,4 @@ jobs:
           uv run ruff check --config pyproject.toml --diff .
       - name: check type hints
         run: |
-          uv run pyright --project=pyproject.toml src/xminigrid
+          uv run pyright --project=pyproject.toml
