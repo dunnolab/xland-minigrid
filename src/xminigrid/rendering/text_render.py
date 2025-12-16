@@ -1,3 +1,5 @@
+from typing import Optional, Union
+
 import jax
 import jax.numpy as jnp
 
@@ -55,7 +57,7 @@ def _wrap_with_color(string: str, color: str) -> str:
 
 
 # WARN: will NOT work under jit and needed for debugging mainly.
-def render(grid: jax.Array, agent: AgentState | None = None) -> str:
+def render(grid: jax.Array, agent: Optional[AgentState] = None) -> str:
     string = ""
 
     for y in range(grid.shape[0]):

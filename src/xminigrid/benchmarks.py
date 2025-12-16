@@ -4,7 +4,7 @@ import bz2
 import os
 import pickle
 import urllib.request
-from typing import Callable
+from typing import Callable, Union
 
 import jax
 import jax.numpy as jnp
@@ -38,7 +38,7 @@ class Benchmark(struct.PyTreeNode):
     def num_rulesets(self) -> int:
         return len(self.goals)
 
-    def get_ruleset(self, ruleset_id: int | jax.Array) -> RuleSet:
+    def get_ruleset(self, ruleset_id: Union[int, jax.Array]) -> RuleSet:
         return get_ruleset(self.goals, self.rules, self.init_tiles, ruleset_id)
 
     def sample_ruleset(self, key: jax.Array) -> RuleSet:
@@ -114,7 +114,7 @@ def get_ruleset(
     goals: jax.Array,
     rules: jax.Array,
     init_tiles: jax.Array,
-    ruleset_id: int | jax.Array,
+    ruleset_id: Union[int, jax.Array],
 ) -> RuleSet:
     goal = jax.lax.dynamic_index_in_dim(goals, ruleset_id, keepdims=False)
     rules = jax.lax.dynamic_index_in_dim(rules, ruleset_id, keepdims=False)

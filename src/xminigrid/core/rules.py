@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import abc
+from typing import Union
 
 import jax
 import jax.numpy as jnp
@@ -18,7 +19,7 @@ NUM_RULES = 12
 # In general, we need a way to select specific function/class based on ID number.
 # We can not just decode without evaluation, as then return type will be different between branches
 def check_rule(
-    encodings: jax.Array, grid: GridState, agent: AgentState, action: int | jax.Array, position: jax.Array
+    encodings: jax.Array, grid: GridState, agent: AgentState, action: Union[int, jax.Array], position: jax.Array
 ) -> tuple[GridState, AgentState]:
     def _check(carry, encoding):
         grid, agent = carry
@@ -51,7 +52,7 @@ def check_rule(
 class BaseRule(struct.PyTreeNode):
     @abc.abstractmethod
     def __call__(
-        self, grid: GridState, agent: AgentState, action: int | jax.Array, position: jax.Array
+        self, grid: GridState, agent: AgentState, action: Union[int, jax.Array], position: jax.Array
     ) -> tuple[GridState, AgentState]: ...
 
     @classmethod

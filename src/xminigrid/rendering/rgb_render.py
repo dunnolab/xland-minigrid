@@ -1,6 +1,7 @@
 # TODO: this is rendering mostly ported or adapted from the original Minigrid. A bit dirty right now...
 import functools
 import math
+from typing import Optional, Union
 
 import numpy as np
 
@@ -181,7 +182,7 @@ TILES_FN_MAP = {
 
 
 # TODO: add highlight for can_see_through_walls=Fasle
-def get_highlight_mask(grid: np.ndarray, agent: AgentState | None, view_size: int) -> np.ndarray:
+def get_highlight_mask(grid: np.ndarray, agent: Optional[AgentState], view_size: int) -> np.ndarray:
     mask = np.zeros((grid.shape[0] + 2 * view_size, grid.shape[1] + 2 * view_size), dtype=np.bool_)
     if agent is None:
         return mask
@@ -207,7 +208,7 @@ def get_highlight_mask(grid: np.ndarray, agent: AgentState | None, view_size: in
 
 @functools.cache
 def render_tile(
-    tile: tuple, agent_direction: int | None = None, highlight: bool = False, tile_size: int = 32, subdivs: int = 3
+    tile: tuple, agent_direction: Optional[int] = None, highlight: bool = False, tile_size: int = 32, subdivs: int = 3
 ) -> np.ndarray:
     img = np.full((tile_size * subdivs, tile_size * subdivs, 3), dtype=np.uint8, fill_value=255)
     # draw tile
@@ -228,7 +229,7 @@ def render_tile(
 # WARN: will NOT work under jit and needed for debugging/presentation mainly.
 def render(
     grid: np.ndarray,
-    agent: AgentState | None = None,
+    agent: Optional[AgentState] = None,
     view_size: IntOrArray = 7,
     tile_size: IntOrArray = 32,
 ) -> np.ndarray:
