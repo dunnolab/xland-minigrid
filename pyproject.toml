@@ -5,7 +5,7 @@ readme = "README.md"
 requires-python =">=3.9"
 license = {file = "LICENSE"}
 authors = [
-  {name = "Alexander Nikulin", email = "a.p.nikulin@tinkoff.ai"},
+  {name = "Alexander Nikulin", email = "hsehowuhh@gmail.com"},
 ]
 dynamic = ["version"]
 
@@ -37,6 +37,7 @@ dependencies = [
     "jaxlib>=0.4.27",
     "flax>=0.8.0",
     "rich>=13.4.2",
+    "tqdm>=4.67.1",
     "chex>=0.1.85",
     "imageio>=2.31.2",
     "imageio-ffmpeg>=0.4.9",
@@ -63,6 +64,12 @@ baselines = [
 [build-system]
 requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
 
 [tool.setuptools.dynamic]
 version = {attr = "xminigrid.__version__"}

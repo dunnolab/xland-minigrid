@@ -175,3 +175,6 @@ src/xminigrid/envs/xland_tmp.py
 scripts/*testing*
 configs/wip
 scripts/eval_example.py
+
+.ruff_cache/
+.pyright/
