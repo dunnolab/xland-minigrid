@@ -7,7 +7,7 @@ from xminigrid.environment import Environment, EnvParams
 from xminigrid.types import TimeStep
 
 
-class JaxWrapper(gym.Env):
+class GymnasiumWrapper(gym.Env):
     metadata = {"render_modes": ["rgb_array", "rich_text"]}
 
     def __init__(self, env: Environment, params: EnvParams):
