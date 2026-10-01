@@ -128,6 +128,30 @@ variations with `register` for convenient further usage with `make`.
 
 For a bit more advanced introduction see provided [walkthrough notebook](examples/walkthrough.ipynb).
 
+### Rendering inside jitted code
+
+`env.render` is convenient, but it builds the image tile by tile with numpy, so it cannot be jitted or vmapped.
+If you need images inside compiled code, for example to score or log many levels at once, `make_render` gives you a
+render function that can:
+
+```python
+import jax
+from xminigrid.rendering.jax_render import make_render
+
+render = jax.jit(make_render(tile_size=32, view_size=env_params.view_size))
+
+# uint8 image of shape (grid_height * 32, grid_width * 32, 3)
+image = render(timestep.state.grid, timestep.state.agent)
+
+# or over a batch of states at once
+images = jax.jit(jax.vmap(render))(grids, agents)
+```
+
+Tiles are pre-rendered once with the numpy renderer and cached (under `XLAND_MINIGRID_CACHE`, `~/.xland_minigrid`
+by default), after which rendering only indexes into that cache. The images are therefore identical to
+`xminigrid.rendering.rgb_render.render` for the same arguments. Note that `tile_size` is fixed when the render
+function is built, as it determines the shape of the cached tiles, while `view_size` may be traced.
+
 ### On environment interface
 
 Currently, there are a lot of new JAX-based environments appearing, each offering its own variant of API. Initially, we tried to reuse Jumanji, but it turned out 
